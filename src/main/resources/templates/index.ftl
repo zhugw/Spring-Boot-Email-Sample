@@ -49,9 +49,9 @@
 		<tbody>
 			<#list persons as person>
 				<tr>
-					<td>${persons.id}</td>
-					<td>${persons.userName}</td>
-					<td>${persons.email}</td>
+					<td>${person.id}</td>
+					<td>${person.userName}</td>
+					<td>${person.email}</td>
 				</tr>
 			</#list>
 		</tbody>
