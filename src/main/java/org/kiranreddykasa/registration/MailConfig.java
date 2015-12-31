@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 
 @Configuration 
 public class MailConfig {
@@ -36,4 +37,11 @@ public class MailConfig {
         properties.setProperty("mail.debug", "false");
         return properties;
     }
+    
+    @Bean(name ="freemarkerConfiguration")	
+   	public FreeMarkerConfigurationFactoryBean freemarkerConfiguration() {
+    	FreeMarkerConfigurationFactoryBean freemarkerConfiguration = new FreeMarkerConfigurationFactoryBean();
+    	freemarkerConfiguration.setTemplateLoaderPath("classpath:/templates");
+   	  return freemarkerConfiguration;
+   	}
 }
