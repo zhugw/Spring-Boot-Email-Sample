@@ -1,5 +1,5 @@
 <html>
-<head>用户注册通知</head>
+<head>Notify of Registration</head>
 <body>
 	hello ${userName}<br> 
 	Your registration is successfully.

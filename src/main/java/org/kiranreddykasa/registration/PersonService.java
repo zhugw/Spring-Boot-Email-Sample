@@ -46,7 +46,7 @@ public class PersonService {
 			MimeMessage msg = javaMailService.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(msg, true, DEFAULT_ENCODING);
 
-			helper.setFrom("no-reply@helijia.com");
+			helper.setFrom("no-reply@foo.com");
 			helper.setTo(person.getEmail());
 			helper.setSubject("Registration");
 
@@ -54,9 +54,9 @@ public class PersonService {
 			helper.setText(content, true);
 			javaMailService.send(msg);
 		} catch (MessagingException e) {
-			logger.error("构造邮件失败", e);
+			logger.error("build email failed", e);
 		} catch (Exception e) {
-			logger.error("发送邮件失败", e);
+			logger.error("send email failed", e);
 		}
 	}
 	/**
@@ -69,11 +69,11 @@ public class PersonService {
 			Template template = freemarkerConfiguration.getTemplate("mailTemplate.ftl", DEFAULT_ENCODING);
 			return FreeMarkerTemplateUtils.processTemplateIntoString(template, context);
 		} catch (IOException e) {
-			logger.error("生成邮件内容失败, FreeMarker模板不存在", e);
-			throw new MessagingException("FreeMarker模板不存在", e);
+			logger.error("FreeMarker template not exist", e);
+			throw new MessagingException("FreeMarker template not exist", e);
 		} catch (TemplateException e) {
-			logger.error("生成邮件内容失败, FreeMarker处理失败", e);
-			throw new MessagingException("FreeMarker处理失败", e);
+			logger.error("FreeMarker process failed", e);
+			throw new MessagingException("FreeMarker process failed", e);
 		}
 	}
 	private void sendSimpleMessage(Person person) {
